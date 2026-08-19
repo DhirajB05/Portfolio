@@ -1,0 +1,50 @@
+.skill-section {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+
+.marquee-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  position: relative;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marquee-row {
+  display: flex;
+  width: max-content;
+  animation: marquee 45s linear infinite;
+  gap: 12px;
+}
+
+.marquee-row.reverse {
+  animation-direction: reverse;
+}
+
+.skill-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-pill);
+  font-size: 0.8rem;
+  font-family: var(--font-ui);
+  color: var(--text-secondary);
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.skill-pill:hover {
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+}
+
+.skill-icon {
+  font-size: 1.1em;
+}

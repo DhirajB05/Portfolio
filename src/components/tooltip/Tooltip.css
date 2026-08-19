@@ -1,0 +1,63 @@
+.tooltip-container {
+  position: relative;
+  display: inline-flex;
+}
+
+.tooltip-bubble {
+  position: absolute;
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border-default);
+  padding: 6px 10px;
+  border-radius: var(--radius-xl);
+  font-size: 0.75rem;
+  font-family: var(--font-ui);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1000;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.tooltip-container:hover .tooltip-bubble {
+  opacity: 1;
+  visibility: visible;
+}
+
+.tooltip-bubble.top {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-6px);
+}
+.tooltip-container:hover .tooltip-bubble.top {
+  transform: translateX(-50%) translateY(-10px);
+}
+
+.tooltip-bubble.bottom {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+}
+.tooltip-container:hover .tooltip-bubble.bottom {
+  transform: translateX(-50%) translateY(10px);
+}
+
+.tooltip-bubble.left {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%) translateX(-6px);
+}
+.tooltip-container:hover .tooltip-bubble.left {
+  transform: translateY(-50%) translateX(-10px);
+}
+
+.tooltip-bubble.right {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%) translateX(6px);
+}
+.tooltip-container:hover .tooltip-bubble.right {
+  transform: translateY(-50%) translateX(10px);
+}

@@ -1,0 +1,34 @@
+.uses-teaser-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.uses-teaser-card:hover {
+  border-color: var(--border-hover);
+}
+
+.uses-teaser-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.uses-teaser-title {
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.uses-teaser-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}

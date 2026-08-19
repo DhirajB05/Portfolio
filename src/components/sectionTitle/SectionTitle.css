@@ -1,0 +1,21 @@
+.section-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.section-title-text {
+  font-family: var(--font-ui);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.section-title-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border-default);
+}

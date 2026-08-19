@@ -1,0 +1,103 @@
+/* Styles for DrawSignatureComponent fallback & styling */
+.signature-overlay-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(11, 13, 14, 0.95);
+  backdrop-filter: blur(16px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  gap: 24px;
+}
+
+.signature-loader-title {
+  font-family: var(--font-ui);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.signature-loader-sub {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+  text-align: center;
+  margin-top: -12px;
+}
+
+.signature-enter-portfolio-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background-color: var(--accent-blue);
+  color: #ffffff;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+  transition: all 0.25s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.signature-enter-portfolio-btn:hover {
+  background-color: var(--accent-blue-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+}
+
+/* Tailwind utility mappings for signature component */
+.relative { position: relative; }
+.z-10 { z-index: 10; }
+.flex { display: flex; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.overflow-hidden { overflow: hidden; }
+.shrink-0 { flex-shrink: 0; }
+.p-1 { padding: 0.25rem; }
+.p-4 { padding: 1rem; }
+.p-6 { padding: 1.5rem; }
+.pb-4 { padding-bottom: 1rem; }
+.px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+.px-8 { padding-left: 2rem; padding-right: 2rem; }
+.py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+.py-5 { padding-top: 1.25rem; padding-bottom: 1.25rem; }
+.gap-2 { gap: 0.5rem; }
+.gap-3 { gap: 0.75rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+.mt-4 { margin-top: 1rem; }
+.w-full { width: 100%; }
+.h-7 { height: 1.75rem; }
+.w-7 { width: 1.75rem; }
+.w-\[320px\] { width: 320px; }
+.max-w-\[320px\] { max-width: 320px; }
+.h-\[200px\] { height: 200px; }
+.rounded-full { border-radius: 9999px; }
+.rounded-\[34px\] { border-radius: 34px; }
+.text-lg { font-size: 1.125rem; }
+.font-bold { font-weight: 700; }
+.touch-none { touch-action: none; }
+.will-change-transform { will-change: transform; }
+
+/* Colors */
+.bg-neutral-100 { background-color: #f5f5f5; }
+.text-neutral-900 { color: #171717; }
+.bg-neutral-800, .dark\:bg-neutral-800 { background-color: #262626; }
+.bg-neutral-900, .dark\:bg-neutral-900 { background-color: #171717; }
+.text-neutral-100, .dark\:text-neutral-100 { color: #f5f5f5; }
+.text-neutral-400, .dark\:text-neutral-400 { color: #a3a3a3; }
+.text-neutral-500, .dark\:text-neutral-500 { color: #737373; }
+.bg-neutral-400 { background-color: #a3a3a3; }
+.bg-neutral-700, .dark\:bg-neutral-700 { background-color: #404040; }
+.text-white { color: #ffffff; }
+
+.border-4 { border-width: 4px; }
+.border-dashed { border-style: dashed; }
+.border-transparent { border-color: transparent; }
+.dark\:border-neutral-700 { border-color: #404040; }

@@ -1,0 +1,23 @@
+.blog-container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 30px auto 50px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  line-height: 1.7;
+}
+
+.blog-nav-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+  margin-bottom: 10px;
+  transition: color 0.2s ease;
+}
+
+.blog-nav-back:hover {
+  color: var(--text-primary);
+}

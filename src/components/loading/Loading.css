@@ -1,0 +1,23 @@
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: var(--bg-loading, #0a0a0a);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  z-index: 10000;
+}
+
+.loading-svg {
+  width: 80px;
+  height: 80px;
+}
+
+.loading-text {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--text-tertiary);
+  letter-spacing: 0.5px;
+}

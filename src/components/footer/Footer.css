@@ -1,0 +1,53 @@
+.footer-container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 40px auto 24px auto;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-default);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.footer-quote {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+  font-style: italic;
+}
+
+.footer-attribution {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-secondary);
+}
+
+.heart-icon {
+  color: red;
+  animation: heart-beat 2s infinite;
+}
+
+.visitor-counter {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-pill);
+  color: var(--text-secondary);
+}
+
+.visitor-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent-green);
+}

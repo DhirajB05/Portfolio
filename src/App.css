@@ -1,0 +1,220 @@
+:root {
+  /* === PULLCORD === */
+  --pullcord-top: 0px;
+  --pullcord-right: 2rem;
+  --pullcord-z: 999;
+  --pullcord-ink: rgba(255, 255, 255, 0.5);
+
+  /* === BACKGROUNDS === */
+  --bg-primary: #0b0d0e;
+  --bg-surface: #1a1b1c;
+  --bg-surface-elevated: #232326;
+  --bg-surface-subtle: #151515;
+  --bg-loading: #0a0a0a;
+
+  /* === TEXT === */
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --text-tertiary: #b4b4b4;
+  --text-muted: #999999;
+  --text-faint: #71767b;
+  --text-dim: #666666;
+  --text-ghost: #333333;
+
+  /* === BORDERS === */
+  --border-default: #444444;
+  --border-hover: #888888;
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --border-inset: #ffffff14;
+  --border-inset-highlight: #ffffff33;
+
+  /* === ACCENTS === */
+  --accent-blue: #3b82f6;
+  --accent-blue-hover: #60a5fa;
+  --accent-amber: #f59e0b;
+  --accent-green: #22c55e;
+  --accent-red: #ef4444;
+  --accent-yellow: #fbbf24;
+
+  /* === STATUS === */
+  --status-active: #02ff67ff;
+  --status-past: #ff3333;
+  --status-future: #ffaa00;
+
+  /* === TYPOGRAPHY === */
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-ui: 'Figtree', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* === SPACING === */
+  --container-max: 700px;
+  --container-padding: 18px;
+  --container-padding-md: 25px;
+  --container-padding-sm: 20px;
+
+  /* === RADIUS === */
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
+  --radius-xl: 6px;
+  --radius-2xl: 8px;
+  --radius-3xl: 10px;
+  --radius-pill: 999px;
+  --radius-full: 50%;
+
+  /* === ANIMATION === */
+  --duration-fast: 0.2s;
+  --duration-normal: 0.25s;
+  --duration-slow: 0.3s;
+  --ease-spring: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --ease-material: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Light Mode Overrides */
+.app-container.light-theme {
+  --bg-primary: #ffffff;
+  --bg-surface: #f4f4f5;
+  --bg-surface-elevated: #e4e4e7;
+  --bg-surface-subtle: #fafafa;
+  --bg-loading: #ffffff;
+
+  --text-primary: #09090b;
+  --text-secondary: #27272a;
+  --text-tertiary: #52525b;
+  --text-muted: #71717a;
+  --text-faint: #a1a1aa;
+  --text-dim: #a1a1aa;
+
+  --border-default: #d4d4d8;
+  --border-hover: #71717a;
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --border-inset: rgba(0, 0, 0, 0.06);
+  --border-inset-highlight: rgba(0, 0, 0, 0.12);
+
+  --pullcord-ink: rgba(0, 0, 0, 0.65);
+}
+
+/* Base Layout Container */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--bg-primary);
+  color: var(--text-secondary);
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.main-content {
+  width: 100%;
+  max-width: var(--container-max);
+  padding: 0 var(--container-padding);
+  margin: 0 auto;
+  flex: 1;
+}
+
+section {
+  max-width: var(--container-max);
+  margin: 0 auto 36px auto;
+  scroll-margin-top: 50px;
+}
+
+/* Pull Cord Hint Annotation */
+.pull-cord-hint {
+  position: fixed;
+  top: 135px;
+  right: calc(2rem + 45px);
+  z-index: 998;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  pointer-events: none;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+.pull-cord-hint span {
+  font-family: 'Caveat', cursive, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+  letter-spacing: -0.2px;
+}
+
+.pull-cord-hint svg {
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+}
+
+/* Responsive Container Padding */
+@media (max-width: 700px) {
+  .main-content {
+    padding: 0 var(--container-padding-md);
+  }
+
+  .pull-cord-hint {
+    top: 130px;
+    right: calc(1rem + 35px);
+  }
+}
+@media (max-width: 400px) {
+  .main-content {
+    padding: 0 var(--container-padding-sm);
+  }
+}
+
+/* Core Composite Shadow for Buttons/Pills */
+.composite-btn {
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    0px 32px 64px -16px #0006,
+    0px 16px 32px -8px #0006,
+    0px 8px 16px -4px #0004,
+    0px 4px 8px -2px #0004,
+    0px -8px 16px -1px #0003,
+    0px 2px 4px -1px #0004,
+    0px 0px 0px 1px #000,
+    inset 0px 0px 0px 1px var(--border-inset),
+    inset 0px 1px 0px var(--border-inset-highlight);
+  transition: all var(--duration-slow) ease;
+}
+
+.composite-btn:hover {
+  border-color: var(--border-hover);
+  box-shadow:
+    0px 40px 80px -16px #0008,
+    0px 20px 40px -8px #0008,
+    0px 12px 20px -4px #0006,
+    0px 6px 12px -2px #0006,
+    0px -12px 20px -1px #0004,
+    0px 4px 8px -1px #0006,
+    0px 0px 0px 1px #000,
+    inset 0px 0px 0px 1px #ffffff20,
+    inset 0px 1px 0px #ffffff40;
+}
+
+/* Animations */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes heart-beat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+@keyframes pulse-dot {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,44 @@
+:root {
+  --chart-scale-01: #232326;
+  --chart-scale-02: #0e4429;
+  --chart-scale-03: #006d32;
+  --chart-scale-04: #26a641;
+  --chart-scale-05: #39d353;
+}
+
+.calendar-wrapper {
+  margin-top: 24px;
+  padding: 16px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  overflow-x: auto;
+  transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+.light-theme .calendar-wrapper {
+  background-color: #ffffff;
+  border-color: #e4e4e7;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.calendar-title {
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.calendar-grid-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.calendar-wrapper svg text {
+  fill: var(--text-secondary) !important;
+  font-family: var(--font-ui) !important;
+}
