@@ -1,5 +1,5 @@
 import React, { useState, Suspense, lazy } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { PullCord } from 'pullcord';
 import 'pullcord/pullcord.css';
 import Navbar from './components/navbar/Navbar';
@@ -21,7 +21,7 @@ export const App: React.FC = () => {
   const [dark, setDark] = useState<boolean>(true);
 
   return (
-    <BrowserRouter>
+    <Router>
       {!hasEntered && <SignatureLoaderOverlay onEnter={() => setHasEntered(true)} />}
       <div className={`app-container ${!dark ? 'light-theme' : ''}`}>
         <PullCord
@@ -61,7 +61,7 @@ export const App: React.FC = () => {
           </Suspense>
         </ClickSpark>
       </div>
-    </BrowserRouter>
+    </Router>
   );
 };
 
