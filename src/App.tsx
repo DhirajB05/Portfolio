@@ -6,6 +6,8 @@ import Navbar from './components/navbar/Navbar';
 import ClickSpark from './components/ClickSpark';
 import Loading from './components/loading/Loading';
 import SignatureLoaderOverlay from './components/loading/SignatureLoaderOverlay';
+import { HireMe, TEXT_TO_ANIMATE } from './core/hire-me';
+import { USER } from './data';
 import './App.css';
 
 const Home = lazy(() => import('./pages/home/Home'));
@@ -60,6 +62,7 @@ export const App: React.FC = () => {
             </Routes>
           </Suspense>
         </ClickSpark>
+        <HireMe text={TEXT_TO_ANIMATE} avatarSrc={USER.avatar} />
       </div>
     </Router>
   );

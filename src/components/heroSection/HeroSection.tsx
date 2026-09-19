@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FaEnvelope, FaGithub, FaLinkedin, FaTwitter, FaFileAlt } from 'react-icons/fa';
 import { GrLocation } from 'react-icons/gr';
-import { HiQrCode } from 'react-icons/hi2';
 import { userImages } from '../../data/images';
 import { getDailyDecoration } from '../../utils/ImageDecoration';
 import Tooltip from '../tooltip/Tooltip';
 import './HeroSection.css';
 
 export const HeroSection: React.FC = () => {
-  const [showQR, setShowQR] = useState<boolean>(false);
   const currentDecoration = getDailyDecoration();
 
   return (
@@ -97,24 +95,8 @@ export const HeroSection: React.FC = () => {
               <FaFileAlt />
             </a>
           </Tooltip>
-
-          <Tooltip text={showQR ? 'Hide QR Code' : 'Show QR Code'}>
-            <button className="qr-toggle-btn" onClick={() => setShowQR(!showQR)}>
-              <HiQrCode size={16} />
-            </button>
-          </Tooltip>
         </div>
       </div>
-
-      {showQR && (
-        <div style={{ marginTop: '10px', textAlign: 'center' }}>
-          <img
-            src={userImages.profile.qrCode}
-            alt="Dhiraj QR Code"
-            style={{ width: '140px', height: '140px', borderRadius: '8px', border: '1px solid #444' }}
-          />
-        </div>
-      )}
     </section>
   );
 };

@@ -47,10 +47,10 @@
   --font-mono: 'JetBrains Mono', monospace;
 
   /* === SPACING === */
-  --container-max: 700px;
-  --container-padding: 18px;
-  --container-padding-md: 25px;
-  --container-padding-sm: 20px;
+  --container-max: 1050px;
+  --container-padding: 27px;
+  --container-padding-md: 36px;
+  --container-padding-sm: 24px;
 
   /* === RADIUS === */
   --radius-sm: 2px;

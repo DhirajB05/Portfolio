@@ -12,7 +12,6 @@ import {
   FaNodeJs,
 } from 'react-icons/fa';
 import {
-  SiTypescript,
   SiFastapi,
   SiExpress,
   SiLangchain,
@@ -20,9 +19,7 @@ import {
   SiVercel,
   SiPostman,
   SiFigma,
-  SiVite,
   SiFirebase,
-  SiCplusplus,
 } from 'react-icons/si';
 import SectionTitle from '../sectionTitle/SectionTitle';
 import './SkillSection.css';
@@ -35,9 +32,7 @@ interface SkillItem {
 
 const technologies: SkillItem[] = [
   { name: 'Python', icon: FaPython, color: '#3776ab' },
-  { name: 'C++', icon: SiCplusplus, color: '#00599c' },
   { name: 'JavaScript', icon: FaJsSquare, color: '#f7df1e' },
-  { name: 'TypeScript', icon: SiTypescript, color: '#3178c6' },
   { name: 'React', icon: FaReact, color: '#61dafb' },
   { name: 'FastAPI', icon: SiFastapi, color: '#009688' },
   { name: 'Express.js', icon: SiExpress, color: '#ffffff' },
@@ -54,7 +49,6 @@ const tools: SkillItem[] = [
   { name: 'Vercel', icon: SiVercel, color: '#ffffff' },
   { name: 'VS Code', icon: FaJsSquare, color: '#007acc' },
   { name: 'Node.js', icon: FaNodeJs, color: '#339933' },
-  { name: 'Vite', icon: SiVite, color: '#646cff' },
   { name: 'Postman', icon: SiPostman, color: '#ff6c37' },
   { name: 'Linux', icon: FaLinux, color: '#fcc624' },
   { name: 'Figma', icon: SiFigma, color: '#f24e1e' },

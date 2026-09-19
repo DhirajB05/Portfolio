@@ -1,0 +1,43 @@
+name: Update Contributions Snapshot
+
+on:
+  schedule:
+    - cron: '30 2 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: "contributions"
+  cancel-in-progress: true
+
+jobs:
+  update-snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Fetch contributions
+        env:
+          GITHUB_TOKEN: ${{ secrets.CONTRIBUTIONS_TOKEN }}
+          GITHUB_USERNAME: DhirajB05
+        run: node scripts/fetch-contributions.mjs
+
+      - name: Commit snapshot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/contributions.json
+          if git diff --cached --quiet; then
+            echo "No changes to snapshot"
+          else
+            git commit -m "chore: update contributions snapshot"
+            git push
+          fi

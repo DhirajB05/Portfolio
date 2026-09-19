@@ -14,8 +14,8 @@
 
 .hero-avatar-wrapper {
   position: relative;
-  width: 90px;
-  height: 90px;
+  width: 125px;
+  height: 125px;
   flex-shrink: 0;
 }
 
@@ -25,15 +25,15 @@
   border-radius: var(--radius-full);
   object-fit: cover;
   border: 2px solid var(--bg-avatar-border, #0a0a0b);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
 }
 
 .hero-decoration {
   position: absolute;
-  top: -10px;
-  right: -10px;
-  width: 36px;
-  height: 36px;
+  top: -12px;
+  right: -12px;
+  width: 48px;
+  height: 48px;
   pointer-events: none;
   animation: float 8s ease-in-out infinite;
 }
@@ -161,16 +161,4 @@
 .hero-social-icon:hover {
   border-color: var(--border-hover);
   color: var(--text-primary);
-}
-
-.qr-toggle-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 10px;
-  font-size: 0.8rem;
-  border-radius: var(--radius-round);
-  background: var(--bg-surface);
-  border: 1px solid var(--border-default);
-  color: var(--text-secondary);
 }

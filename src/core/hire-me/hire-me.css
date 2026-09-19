@@ -1,0 +1,99 @@
+.hire-me-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+}
+
+.hire-me-bubble-wrapper {
+  display: flex;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+.hire-me-bubble {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 14px;
+  min-height: 34px;
+  background-color: #1a1b1c;
+  color: #ffffff;
+  border-radius: 9999px;
+  font-family: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  white-space: nowrap;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.hire-me-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.hire-me-container:hover .hire-me-avatar {
+  transform: scale(1.06);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.hire-me-container:hover .hire-me-bubble {
+  background-color: #232326;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Light theme overrides */
+.light-theme .hire-me-bubble {
+  background-color: #ffffff;
+  color: #111111;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.light-theme .hire-me-bubble:hover {
+  background-color: #f6f6f6;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.light-theme .hire-me-avatar {
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+@media (max-width: 480px) {
+  .hire-me-container {
+    bottom: 16px;
+    right: 16px;
+    gap: 8px;
+  }
+
+  .hire-me-bubble {
+    font-size: 0.78rem;
+    padding: 5px 10px;
+    min-height: 30px;
+    max-width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .hire-me-avatar {
+    width: 36px;
+    height: 36px;
+  }
+}
