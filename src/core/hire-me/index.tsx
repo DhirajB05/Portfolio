@@ -26,7 +26,7 @@ export const HireMe: React.FC<HireMeProps> = ({ text, avatarSrc, className, onCl
       (ANIMATION_DURATION + ANIMATION_REPEAT_DELAY) * 1000
     );
     return () => clearInterval(interval);
-  }, [text?.length]);
+  }, [text]);
 
   return (
     <motion.div
