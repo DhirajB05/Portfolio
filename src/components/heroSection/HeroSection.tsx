@@ -32,7 +32,7 @@ export const HeroSection: React.FC = () => {
 
           <div className="hero-status">
             <span className="hero-status-dot" />
-            <span>Building & Learning Agentic AI Systems</span>
+            <span>Backend & Agentic AI Explorer</span>
           </div>
 
           <div className="hero-meta">
@@ -45,9 +45,9 @@ export const HeroSection: React.FC = () => {
       </div>
 
       <ul className="hero-bio">
-        <li>Information Science & Engineering student at Sahyadri College passionate about Generative AI & Agentic Security.</li>
-        <li>Active open-source contributor and hackathon builder.</li>
-        <li>Building and learning Agentic AI systems, AI security middleware, RAG platforms, and full-stack web applications.</li>
+        <li>Second-year Information Science student learning backend development and exploring agentic AI.</li>
+        <li>Building full-stack projects to understand how systems fit together end to end.</li>
+        <li>Open-source contributor gaining momentum — always open to collaborations in backend, AI, and developer tools.</li>
       </ul>
 
       <div className="hero-actions">

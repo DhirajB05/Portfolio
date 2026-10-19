@@ -4,7 +4,7 @@ export const USER = {
   name: 'Dhiraj Bhavikatti',
   handle: '@DhirajB05',
   avatar: userImages.profile.avatar,
-  bio: 'Building & Learning Agentic AI Systems',
+  bio: 'Backend & Agentic AI Explorer',
   location: 'Mangalore, India',
   email: 'dhirajbhavikatti05@gmail.com',
 };
