@@ -16,13 +16,13 @@ interface ExperienceData {
 const experienceEntries: ExperienceData[] = [
   {
     company: 'GDG Atria AI Hackathon',
-    role: 'Lead AI Security Developer — Agentic AI Security System',
+    role: 'Hackathon Participant & Builder',
     dates: 'Apr 2026',
     status: 'past',
     description: [
-      'Built an Agentic AI Security System during a 24-hour AI-focused hackathon at Atria Institute of Technology, Bengaluru.',
-      'Architected a 2-stage prompt injection detection pipeline using DeBERTa-v3 and Anthropic Claude API.',
-      'Designed a live dashboard to monitor real-time threat vectors and attack pattern analytics.',
+      'Prototyped an AI security middleware during a 24-hour hackathon at Atria Institute of Technology, Bengaluru.',
+      'Implemented a 2-stage prompt injection detection pipeline using DeBERTa-v3 and the Claude API.',
+      'Built a dashboard to visualize incoming prompts, risk scores, and attack vectors in real time.',
     ],
   },
   {

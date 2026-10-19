@@ -10,10 +10,10 @@ export const userImages = {
     qrCode: getAssetUrl('/images/profile/qr-code.png'),
   },
   projects: {
-    project1: getAssetUrl('/images/projects/agneisx.png'),
+    project1: getAssetUrl('/images/projects/agentic-ai-security.jpg'),
     project2: getAssetUrl('/images/projects/eclipse.png'),
-    project3: getAssetUrl('/images/projects/roast-machine.png'),
-    project4: getAssetUrl('/images/projects/rag-app.png'),
+    project3: getAssetUrl('/images/projects/ai-github-analyzer.png'),
+    project4: getAssetUrl('/images/projects/rag-document-qa.png'),
     project5: getAssetUrl('/images/projects/podman.png'),
     project6: getAssetUrl('/images/projects/codeminds.png'),
   },
