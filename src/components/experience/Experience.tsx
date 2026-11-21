@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import SectionTitle from '../sectionTitle/SectionTitle';
 import ExperienceCard from './ExperienceCard';
 import Calendar from '../calendar/Calendar';
+import { useViewport, scaleForMobile } from '@/hooks/useViewport';
 import './Experience.css';
 
 interface ExperienceData {
@@ -59,16 +60,35 @@ const experienceEntries: ExperienceData[] = [
 
 export const Experience: React.FC = () => {
   const [expandedIdx, setExpandedIdx] = useState<number | null>(0);
+  const { isMobile } = useViewport();
 
   const toggleExpand = (idx: number) => {
     setExpandedIdx(expandedIdx === idx ? null : idx);
   };
 
+  // ── Desktop values scaled by 0.9 on mobile only ─────────────────────────
+  const sectionMarginBottom = scaleForMobile(isMobile, 40);
+  const containerGap = scaleForMobile(isMobile, 16);
+  const timelineGap = scaleForMobile(isMobile, 16);
+  const timelinePaddingLeft = scaleForMobile(isMobile, 20);
+
   return (
-    <section className="experience-container">
+    <section
+      className="experience-container"
+      style={{
+        gap: containerGap,
+        marginBottom: sectionMarginBottom,
+      }}
+    >
       <SectionTitle>Experience & Hackathons</SectionTitle>
 
-      <div className="experience-timeline">
+      <div
+        className="experience-timeline"
+        style={{
+          gap: timelineGap,
+          paddingLeft: timelinePaddingLeft,
+        }}
+      >
         {experienceEntries.map((entry, idx) => (
           <ExperienceCard
             key={idx}
@@ -80,6 +100,7 @@ export const Experience: React.FC = () => {
             description={entry.description}
             isExpanded={expandedIdx === idx}
             onToggle={() => toggleExpand(idx)}
+            isMobile={isMobile}
           />
         ))}
       </div>

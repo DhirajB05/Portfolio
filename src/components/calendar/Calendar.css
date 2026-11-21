@@ -12,7 +12,7 @@
   background-color: var(--bg-surface);
   border: 1px solid var(--border-default);
   border-radius: var(--radius-lg);
-  overflow-x: auto;
+  overflow: hidden;
   transition: background-color 0.4s ease, border-color 0.4s ease;
 }
 
@@ -24,10 +24,10 @@
 
 .calendar-title {
   font-family: var(--font-ui);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .calendar-grid-container {
@@ -36,9 +36,32 @@
   align-items: center;
   width: 100%;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+/* Ensure SVG and internal elements don't get squashed by global CSS reset (img, svg { max-width: 100% }) */
+.calendar-grid-container .react-activity-calendar,
+.calendar-grid-container .react-activity-calendar__scroll-container {
+  width: max-content;
+  max-width: none;
+  overflow: visible;
+}
+
+.calendar-grid-container svg {
+  max-width: none !important;
+  width: auto !important;
+  height: auto !important;
+  display: block;
 }
 
 .calendar-wrapper svg text {
   fill: var(--text-secondary) !important;
   font-family: var(--font-ui) !important;
+}
+
+@media (max-width: 700px) {
+  .calendar-wrapper {
+    padding: 12px;
+  }
 }

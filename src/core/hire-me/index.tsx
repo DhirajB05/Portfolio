@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '@/lib/utils';
 import { USER } from '@/data';
+import { useViewport, scaleForMobile } from '@/hooks/useViewport';
 import './hire-me.css';
 
 const ANIMATION_DURATION = 1; // seconds
@@ -15,24 +16,60 @@ export type HireMeProps = {
 };
 
 export const HireMe: React.FC<HireMeProps> = ({ text, avatarSrc, className, onClick }) => {
+  const { isMobile } = useViewport();
   const [index, setIndex] = useState<number>(0);
 
+  // ── Bifurcated interval: desktop cadence vs mobile slowed cadence ─────
   useEffect(() => {
     if (!text || text.length === 0) return;
+
+    const intervalMs = isMobile
+      ? (ANIMATION_DURATION + ANIMATION_REPEAT_DELAY + 1) * 1000
+      : (ANIMATION_DURATION + ANIMATION_REPEAT_DELAY) * 1000;
+
     const interval = setInterval(
       () => {
         setIndex((prevIndex) => (prevIndex + 1) % text.length);
       },
-      (ANIMATION_DURATION + ANIMATION_REPEAT_DELAY) * 1000
+      intervalMs
     );
     return () => clearInterval(interval);
-  }, [text]);
+  }, [text, isMobile]);
+
+  const entranceVariants = isMobile
+    ? {
+        initial: { opacity: 0 },
+        animate: { opacity: 1 },
+        transition: { duration: scaleForMobile(isMobile, 0.3) },
+      }
+    : {
+        initial: { opacity: 0, scale: 0.9, y: 12 },
+        animate: { opacity: 1, scale: 1, y: 0 },
+        transition: { duration: 0.4 },
+      };
+
+  const bubbleVariants = isMobile
+    ? {
+        initial: { opacity: 0 },
+        animate: { opacity: 1 },
+        exit: { opacity: 0 },
+        transition: { duration: scaleForMobile(isMobile, 0.2) },
+      }
+    : {
+        initial: { opacity: 0, y: 8 },
+        animate: { opacity: 1, y: 0 },
+        exit: { opacity: 0, y: -8 },
+        transition: {
+          duration: 0.35,
+          ease: 'easeOut' as const,
+        },
+      };
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.9, y: 12 }}
-      animate={{ opacity: 1, scale: 1, y: 0 }}
-      transition={{ duration: 0.4 }}
+      initial={entranceVariants.initial}
+      animate={entranceVariants.animate}
+      transition={entranceVariants.transition}
       className={cn('hire-me-container', className)}
       onClick={onClick}
       role="complementary"
@@ -42,13 +79,10 @@ export const HireMe: React.FC<HireMeProps> = ({ text, avatarSrc, className, onCl
         <AnimatePresence mode="wait">
           <motion.div
             key={index}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{
-              duration: 0.35,
-              ease: 'easeOut',
-            }}
+            initial={bubbleVariants.initial}
+            animate={bubbleVariants.animate}
+            exit={bubbleVariants.exit}
+            transition={bubbleVariants.transition}
             className="hire-me-bubble"
           >
             {text[index]}
@@ -59,6 +93,10 @@ export const HireMe: React.FC<HireMeProps> = ({ text, avatarSrc, className, onCl
         src={avatarSrc}
         alt="Dhiraj Bhavikatti"
         className="hire-me-avatar"
+        style={{
+          width: isMobile ? scaleForMobile(isMobile, 32) : undefined,
+          height: isMobile ? scaleForMobile(isMobile, 32) : undefined,
+        }}
       />
     </motion.div>
   );
@@ -66,7 +104,7 @@ export const HireMe: React.FC<HireMeProps> = ({ text, avatarSrc, className, onCl
 
 export const TEXT_TO_ANIMATE = [
   "I'm Dhiraj Bhavikatti",
-  "Aspiring Software Engineer",
+  'Aspiring Software Engineer',
   "Hire me, I use Next.js!",
   "Hire me, I use Agents!",
   "Hire me, I use React!",

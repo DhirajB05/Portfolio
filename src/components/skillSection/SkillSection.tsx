@@ -22,6 +22,7 @@ import {
   SiFirebase,
 } from 'react-icons/si';
 import SectionTitle from '../sectionTitle/SectionTitle';
+import { useViewport, scaleForMobile, mobileRem, mobilePx } from '@/hooks/useViewport';
 import './SkillSection.css';
 
 interface SkillItem {
@@ -55,18 +56,48 @@ const tools: SkillItem[] = [
 ];
 
 export const SkillSection: React.FC = () => {
+  const { isMobile } = useViewport();
+
+  // ── Desktop values scaled by 0.9 on mobile only ─────────────────────────
+  const sectionMarginBottom = scaleForMobile(isMobile, 40);
+  const rowGap = scaleForMobile(isMobile, 12);
+  const pillPadding = `${mobilePx(isMobile, 6)} ${mobilePx(isMobile, 14)}`;
+  const pillFontSize = mobileRem(isMobile, 0.8);
+  const pillGap = scaleForMobile(isMobile, 8);
+
   return (
-    <section className="skill-section">
+    <section
+      className="skill-section"
+      style={{
+        marginBottom: sectionMarginBottom,
+      }}
+    >
       <SectionTitle>Skills & Tech Stack</SectionTitle>
 
-      <div className="marquee-container">
+      <div
+        className="marquee-container"
+        style={{ gap: rowGap }}
+      >
         {/* Row 1: Technologies */}
         <div className="marquee-row">
           {[...technologies, ...technologies].map((item, idx) => {
             const Icon = item.icon;
             return (
-              <div className="skill-pill" key={`tech-${idx}`}>
-                <Icon className="skill-icon" style={{ color: item.color }} />
+              <div
+                className="skill-pill"
+                key={`tech-${idx}`}
+                style={{
+                  padding: pillPadding,
+                  fontSize: pillFontSize,
+                  gap: pillGap,
+                  borderRadius: 'var(--radius-pill)',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                <Icon
+                  className="skill-icon"
+                  style={{ color: item.color }}
+                />
                 <span>{item.name}</span>
               </div>
             );
@@ -78,8 +109,21 @@ export const SkillSection: React.FC = () => {
           {[...tools, ...tools].map((item, idx) => {
             const Icon = item.icon;
             return (
-              <div className="skill-pill" key={`tool-${idx}`}>
-                <Icon className="skill-icon" style={{ color: item.color }} />
+              <div
+                className="skill-pill"
+                key={`tool-${idx}`}
+                style={{
+                  padding: pillPadding,
+                  fontSize: pillFontSize,
+                  gap: pillGap,
+                  borderRadius: 'var(--radius-pill)',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                <Icon
+                  className="skill-icon"
+                  style={{ color: item.color }}
+                />
                 <span>{item.name}</span>
               </div>
             );

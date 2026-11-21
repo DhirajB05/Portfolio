@@ -149,13 +149,21 @@ section {
 
 /* Responsive Container Padding */
 @media (max-width: 700px) {
+  :root {
+    --pullcord-right: 0px;
+  }
+
   .main-content {
     padding: 0 var(--container-padding-md);
   }
 
   .pull-cord-hint {
     top: 130px;
-    right: calc(1rem + 35px);
+    right: calc(var(--pullcord-right, 0px) + 38px);
+  }
+
+  .pull-cord-hint span {
+    font-size: 0.72rem;
   }
 }
 @media (max-width: 400px) {
