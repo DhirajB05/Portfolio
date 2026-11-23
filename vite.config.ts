@@ -1,11 +1,12 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { tailwindLocal } from './scripts/tailwind-vite-plugin.mjs';
 import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   base: process.env.VERCEL ? '/' : '/Portfolio/',
-  plugins: [react()],
+  plugins: [react(), tailwindLocal()],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),

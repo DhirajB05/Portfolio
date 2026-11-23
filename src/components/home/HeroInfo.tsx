@@ -1,0 +1,139 @@
+import { useEffect, useState } from 'react';
+
+import { Link } from 'react-router-dom';
+import { motion } from 'motion/react';
+
+import { instrumentSerif } from '@/config/font';
+import { heroConfig } from '@/config/hero';
+
+import Tooltip from '../tooltip/Tooltip';
+import { Reveal } from '../common/Reveal';
+
+export const HeroInfo = () => {
+  const { name, description, socialLinks, professions, accentColor, fixedRole } =
+    heroConfig;
+  const [index, setIndex] = useState(0);
+  const longestProfession = professions.reduce(
+    (longest, profession) =>
+      profession.length > longest.length ? profession : longest,
+    ''
+  );
+
+  useEffect(() => {
+    if (!professions.length) return;
+
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % professions.length);
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, [professions.length]);
+
+  return (
+    <div className="mt-5 md:mt-24">
+      {/* Name + verified badge */}
+      <Reveal delay={0.3}>
+        <div className="flex items-center justify-center gap-3 md:justify-start">
+          <h1
+            className={`${instrumentSerif.className} text-3xl font-bold italic text-foreground leading-tight`}
+          >
+            {name}
+          </h1>
+
+          <svg
+            viewBox="0 0 24 24"
+            className="ml-1 size-5 shrink-0 fill-current"
+            style={{ fill: accentColor }}
+            role="img"
+            aria-label="Verified account"
+          >
+            <path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.998-3.818-3.998-.47 0-.92.084-1.336.25C14.818 2.415 13.51 1.5 12 1.5s-2.816.917-3.437 2.25c-.415-.165-.866-.25-1.336-.25-2.11 0-3.818 1.79-3.818 4 0 .495.083.965.238 1.4-1.272.65-2.147 2.02-2.147 3.6 0 1.457.748 2.795 1.867 3.48-.05.19-.083.39-.083.595 0 2.21 1.71 3.998 3.818 3.998.47 0 .92-.084 1.336-.25.62 1.333 1.926 2.25 3.437 2.25s2.817-.917 3.437-2.25c.415-.165.866-.25 1.336-.25 2.11 0 3.818-1.79 3.818-4 0-.205-.034-.405-.084-.595 1.12-.685 1.868-2.023 1.868-3.48zm-11.454 4.34-3.32-3.32 1.415-1.415 1.905 1.905 4.775-4.775 1.415 1.415-6.19 6.19z" />
+          </svg>
+        </div>
+      </Reveal>
+
+      {/* Roles line: "I'm a" + pill + "&" + rotating */}
+      <Reveal delay={0.4}>
+        <p className="my-2 text-center text-sm leading-relaxed text-neutral-500 md:text-left md:text-xl">
+          Aspiring{' '}
+          <span
+            className="electric-role-card text-foreground relative mx-2"
+            style={{ fontSize: '0.95em', padding: '1.9px 5.7px' }}
+          >
+            <span className="corner-mark corner-tl" aria-hidden="true" />
+            <span className="corner-mark corner-tr" aria-hidden="true" />
+            <span className="corner-mark corner-bl" aria-hidden="true" />
+            <span className="corner-mark corner-br" aria-hidden="true" />
+            {fixedRole}
+          </span>
+          {' '}&amp;{' '}
+          <span className="text-foreground relative inline-grid max-w-full text-left align-bottom font-medium">
+            <span aria-hidden="true" className="invisible col-start-1 row-start-1 whitespace-nowrap">
+              {longestProfession}
+            </span>
+            {professions.map((profession, i) => (
+              <motion.span
+                key={profession}
+                initial={false}
+                animate={{
+                  opacity: index === i ? 1 : 0,
+                  filter: index === i ? 'blur(0px)' : 'blur(4px)',
+                  y: index === i ? 0 : 5,
+                }}
+                transition={{ duration: 0.3 }}
+                className={`col-start-1 row-start-1 whitespace-nowrap ${
+                  index === i ? 'relative' : 'pointer-events-none absolute'
+                }`}
+              >
+                {profession}
+              </motion.span>
+            ))}
+          </span>
+        </p>
+      </Reveal>
+
+      {/* Bio */}
+      <Reveal delay={0.4}>
+        <p className="my-2 text-center text-sm leading-relaxed md:whitespace-nowrap md:text-left">
+          {description}
+        </p>
+      </Reveal>
+
+      {/* Social links */}
+      <Reveal delay={0.5}>
+        <div className="my-3 flex w-fit items-center justify-center gap-2 md:justify-start">
+          {socialLinks.map((item) => {
+            const Icon = item.icon;
+            const isInternal = item.value.startsWith('/');
+
+            return (
+              <Tooltip key={item.id} text={item.name}>
+                {isInternal ? (
+                  <Link
+                    to={item.value}
+                    aria-label={item.name}
+                    className="flex size-8 items-center justify-center"
+                  >
+                    <Icon className="size-7 text-[#909092]" />
+                  </Link>
+                ) : (
+                  <a
+                    href={item.value}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={item.name}
+                    className="flex size-8 items-center justify-center"
+                  >
+                    <Icon className="size-7 text-[#909092]" />
+                  </a>
+                )}
+              </Tooltip>
+            );
+          })}
+        </div>
+      </Reveal>
+    </div>
+  );
+};
+
+export default HeroInfo;

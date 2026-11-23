@@ -1,4 +1,4 @@
-const getAssetUrl = (path: string): string => {
+export const getAssetUrl = (path: string): string => {
   const cleanPath = path.startsWith('/') ? path.slice(1) : path;
   const baseUrl = import.meta.env.BASE_URL || '/';
   return baseUrl.endsWith('/') ? `${baseUrl}${cleanPath}` : `${baseUrl}/${cleanPath}`;
@@ -8,6 +8,19 @@ export const userImages = {
   profile: {
     avatar: getAssetUrl('/images/profile/pfp-latest.jpg'),
     qrCode: getAssetUrl('/images/profile/qr-code.png'),
+    // The reference hero swaps to a second avatar on click. Use the existing
+    // QR code asset instead of copying Mohan's unrelated image.
+    secondaryAvatar: getAssetUrl('/images/profile/qr-code.png'),
+    // Reference hero uses a looping video; adapt with one of this portfolio's
+    // own wide project images so the banner keeps the same 16/10 rhythm.
+    // Animated hero banner. The source GIF carries a Netscape loop count of 0,
+    // so the browser replays it forever without stopping at the last frame.
+    banner: getAssetUrl('/images/profile/banner.gif'),
+  },
+  logos: {
+    gdg: getAssetUrl('/images/logos/GDG.png'),
+    sosc: getAssetUrl('/images/logos/SOSC.png'),
+    isdc: getAssetUrl('/images/logos/ISDC.png'),
   },
   projects: {
     project1: getAssetUrl('/images/projects/agentic-ai-security.jpg'),

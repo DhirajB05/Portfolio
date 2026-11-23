@@ -1,64 +1,263 @@
-/* === CSS RESET === */
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+/*
+ * Tailwind CSS v4 entry point.
+ *
+ * The repo already ships its own CSS reset below, so preflight is
+ * intentionally NOT imported — only the theme tokens and the utilities
+ * layer. That lets the devfolio-v2 components keep their original markup.
+ * `scripts/tailwind-vite-plugin.mjs` compiles this file at build/dev time.
+ */
+
+@layer theme, base, components, utilities;
+
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+/* next-themes uses `attribute="class"`, so `.dark` lands on <html>.
+   Map the `dark:` variant to it (editing this file also forces Tailwind to
+   rescan sources for newly added utility classes). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ------------------------------------------------------------------ */
+/* Design tokens — bridged onto the palette declared in `src/App.css`  */
+/* ------------------------------------------------------------------ */
+@theme inline {
+  --color-background: var(--bg-primary);
+  --color-foreground: var(--text-primary);
+
+  --color-card: var(--bg-surface);
+  --color-card-foreground: var(--text-primary);
+
+  --color-popover: var(--bg-surface);
+  --color-popover-foreground: var(--text-primary);
+
+  --color-primary: var(--accent-blue);
+  --color-primary-foreground: #ffffff;
+
+  --color-secondary: var(--bg-surface-elevated);
+  --color-secondary-foreground: var(--text-primary);
+
+  --color-muted: var(--bg-surface);
+  --color-muted-foreground: var(--text-secondary);
+
+  --color-accent: var(--bg-surface-elevated);
+  --color-accent-foreground: var(--text-primary);
+
+  --color-destructive: var(--accent-red);
+
+  --color-border: var(--border-default);
+  --color-input: var(--border-default);
+  --color-ring: var(--border-hover);
+
+  --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Instrument Serif', ui-serif, Georgia, Cambria, serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  --font-caveat: 'Caveat', ui-rounded, cursive;
 }
 
-html {
-  scroll-behavior: smooth;
-  font-family: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background-color: #0b0d0e;
-  color: #b3b3b3;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  font-size: 120%;
+@theme {
+  --animate-marquee: marquee 50s linear infinite;
 }
 
-body {
-  background-color: #0b0d0e;
-  color: #b3b3b3;
-  min-height: 100vh;
-  overflow-x: hidden;
+/* ------------------------------------------------------------------ */
+/* Keyframes carried over from devfolio-v2 `app/globals.css`           */
+/* ------------------------------------------------------------------ */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+@keyframes hire-me-shake {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(-5deg);
+  }
+
+  50% {
+    transform: rotate(10deg);
+  }
+
+  75% {
+    transform: rotate(-5deg);
+  }
 }
 
-button {
-  font-family: inherit;
-  border: none;
-  background: none;
-  cursor: pointer;
+.hire-me-shake:hover {
+  animation: hire-me-shake 0.3s ease-in-out;
 }
 
-img, svg {
-  display: block;
-  max-width: 100%;
+.react-activity-calendar {
+  overflow: visible;
 }
 
-::selection {
-  background-color: rgba(180, 180, 180, 0.3);
-  color: #ffffff;
+/* Electric-green outlined role card with crossed corners and solid dots. */
+.electric-role-card {
+  position: relative;
+  display: inline-block;
+  border: 1px solid #39ff14;
+  box-shadow: 0 0 8px rgb(57 255 20 / 25%);
 }
 
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+.electric-role-card .corner-mark {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-style: solid;
+  border-color: #39ff14;
+  pointer-events: none;
 }
 
-::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.02);
+.electric-role-card .corner-mark::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #39ff14;
 }
 
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 10px;
+.electric-role-card .corner-tl {
+  top: -4px;
+  left: -4px;
+  border-width: 1px 0 0 1px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3);
+.electric-role-card .corner-tl::after {
+  top: 4px;
+  left: 4px;
+  transform: translate(-50%, -50%);
+}
+
+.electric-role-card .corner-tr {
+  top: -4px;
+  right: -4px;
+  border-width: 1px 1px 0 0;
+}
+
+.electric-role-card .corner-tr::after {
+  top: 4px;
+  left: 8px;
+  transform: translate(-50%, -50%);
+}
+
+.electric-role-card .corner-bl {
+  bottom: -4px;
+  left: -4px;
+  border-width: 0 0 1px 1px;
+}
+
+.electric-role-card .corner-bl::after {
+  top: 8px;
+  left: 4px;
+  transform: translate(-50%, -50%);
+}
+
+.electric-role-card .corner-br {
+  right: -4px;
+  bottom: -4px;
+  border-width: 0 1px 1px 0;
+}
+
+.electric-role-card .corner-br::after {
+  top: 8px;
+  left: 8px;
+  transform: translate(-50%, -50%);
+}
+
+/* The repo reset sets `img, svg { max-width: 100% }`; inline skill icons
+   inside flex pills need the box model back. */
+.group\/icon svg,
+[class*='group/icon'] svg {
+  max-width: none;
+}
+
+/* === CSS RESET ===
+ * Kept in `base` on purpose: an unlayered `margin: 0` would beat every
+ * Tailwind spacing utility (`@layer utilities`) and silently break the
+ * ported devfolio sections.
+ */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    /* Tailwind's rem-based spacing/type assumes the browser default. */
+    font-size: 100%;
+    /* The floating pull-cord widget sits partly outside the viewport. */
+    overflow-x: clip;
+    scroll-behavior: smooth;
+    font-family: 'Poppins', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.5;
+    background-color: #0b0d0e;
+    color: #fafafa;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  html:not(.dark) {
+    color: #09090b;
+  }
+
+  body {
+    background-color: #0b0d0e;
+    color: inherit;
+    line-height: 1.5;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button {
+    font-family: inherit;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+
+  img,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  ::selection {
+    background-color: rgba(180, 180, 180, 0.3);
+    color: #ffffff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
 }

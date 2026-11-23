@@ -1,19 +1,15 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import DrawSignatureComponent from './DrawSignatureComponent';
 import DynamicText from './DynamicText';
+// Keeps the full-screen backdrop styling for the spinner → greetings intro.
+import './DrawSignatureComponent.css';
 
 interface SignatureLoaderOverlayProps {
   onEnter: () => void;
 }
 
 export const SignatureLoaderOverlay: React.FC<SignatureLoaderOverlayProps> = ({ onEnter }) => {
-  const [isSigned, setIsSigned] = useState<boolean>(false);
   const [isExiting, setIsExiting] = useState<boolean>(false);
-
-  const handleFinish = () => {
-    setIsSigned(true);
-  };
 
   const handleGreetingComplete = () => {
     setIsExiting(true);
@@ -32,16 +28,7 @@ export const SignatureLoaderOverlay: React.FC<SignatureLoaderOverlayProps> = ({ 
           exit={{ opacity: 0, scale: 1.05 }}
           transition={{ duration: 0.5 }}
         >
-          {!isSigned ? (
-            <DrawSignatureComponent
-              startLabel="Start Signing"
-              finishLabel="Finish Signing"
-              doneLabel="Signature Done"
-              onFinish={handleFinish}
-            />
-          ) : (
-            <DynamicText onComplete={handleGreetingComplete} />
-          )}
+          <DynamicText onComplete={handleGreetingComplete} />
         </motion.div>
       )}
     </AnimatePresence>

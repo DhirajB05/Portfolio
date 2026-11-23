@@ -60,9 +60,13 @@
 
 .project-title {
   font-family: var(--font-ui);
-  font-size: 0.95rem;
+  font-size: 1.007rem;
   font-weight: 600;
   color: var(--text-primary);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .project-badges {

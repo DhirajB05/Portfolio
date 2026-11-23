@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaFileAlt } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaFileAlt } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
 
 export interface SocialLink {
   name: string;
@@ -22,9 +23,9 @@ export const socialLinks: SocialLink[] = [
     color: '#0a66c2',
   },
   {
-    name: 'Twitter',
+    name: 'X',
     url: 'https://x.com/DhirajB05',
-    icon: <FaTwitter />,
+    icon: <FaXTwitter />,
     color: '#1da1f2',
   },
   {

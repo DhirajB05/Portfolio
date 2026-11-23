@@ -39,7 +39,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
 
   // ── Desktop values scaled by 0.9 on mobile only ─────────────────────────
   const cardPadding = isMobile ? '16px' : undefined;
-  const titleFontSize = mobileRem(isMobile, 1.25);
+  const titleFontSize = mobileRem(isMobile, 1.16865);
   const descFontSize = mobileRem(isMobile, 0.9);
   const techFontSize = mobileRem(isMobile, 0.8);
   const linkFontSize = mobileRem(isMobile, 0.82);

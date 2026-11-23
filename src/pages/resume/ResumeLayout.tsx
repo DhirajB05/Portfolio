@@ -2,6 +2,9 @@ import React from 'react';
 import { HiDocumentDownload } from 'react-icons/hi';
 import SectionTitle from '../../components/sectionTitle/SectionTitle';
 import Footer from '../../components/footer/Footer';
+import { getAssetUrl } from '../../data/images';
+
+const RESUME_URL = getAssetUrl('/resume/resume.pdf');
 
 export const ResumeLayout: React.FC = () => {
   return (
@@ -10,7 +13,7 @@ export const ResumeLayout: React.FC = () => {
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
           <SectionTitle>Resume — Dhiraj Bhavikatti</SectionTitle>
           <a
-            href="/resume/resume.pdf"
+            href={RESUME_URL}
             download="Dhiraj_Bhavikatti_Resume.pdf"
             className="composite-btn"
             style={{
@@ -29,7 +32,7 @@ export const ResumeLayout: React.FC = () => {
 
         <div style={{ width: '100%', height: '800px', borderRadius: '8px', overflow: 'hidden', border: '1px solid #444' }}>
           <iframe
-            src="/resume/resume.pdf"
+            src={RESUME_URL}
             title="Dhiraj Bhavikatti Resume"
             width="100%"
             height="100%"

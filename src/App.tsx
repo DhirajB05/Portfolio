@@ -2,7 +2,6 @@ import React, { useState, Suspense, lazy } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { PullCord } from 'pullcord';
 import 'pullcord/pullcord.css';
-import Navbar from './components/navbar/Navbar';
 import ClickSpark from './components/ClickSpark';
 import Loading from './components/loading/Loading';
 import SignatureLoaderOverlay from './components/loading/SignatureLoaderOverlay';
@@ -10,6 +9,7 @@ import { HireMe, TEXT_TO_ANIMATE } from './core/hire-me';
 import { USER } from './data';
 import { useTheme } from 'next-themes';
 import { useViewport } from '@/hooks/useViewport';
+import { useClickSound } from '@/hooks/useClickSound';
 import './App.css';
 
 const Home = lazy(() => import('./pages/home/Home'));
@@ -25,6 +25,8 @@ export const App: React.FC = () => {
   const { resolvedTheme, setTheme } = useTheme();
   const { isMobile } = useViewport();
   const dark = resolvedTheme === 'dark';
+
+  useClickSound();
 
   // ── Pull-cord hint: scaled on mobile, aligned neatly next to cord ──
   const cordHintFontSize = isMobile ? 0.72 : 1.4; // rem (reduced ~50% total on mobile)
@@ -80,7 +82,6 @@ export const App: React.FC = () => {
             <path d="M 38 12 L 54 13 L 48 26" />
           </svg>
         </div>
-        <Navbar />
         <ClickSpark sparkColor={dark ? '#ffffff' : '#000000'} sparkSize={10} sparkRadius={15}>
           <Suspense fallback={<Loading />}>
             <Routes>

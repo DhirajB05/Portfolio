@@ -3,7 +3,12 @@ import { useViewport } from '@/hooks/useViewport';
 import GitHubCalendar from 'react-github-calendar';
 import './Calendar.css';
 
-export const Calendar: React.FC = () => {
+export interface CalendarProps {
+  /** Show the small "GitHub Contributions" heading inside the card. */
+  showTitle?: boolean;
+}
+
+export const Calendar: React.FC<CalendarProps> = ({ showTitle = true }) => {
   const { isMobile } = useViewport();
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [isLightMode, setIsLightMode] = useState<boolean>(() => {
@@ -43,7 +48,7 @@ export const Calendar: React.FC = () => {
 
   return (
     <div className="calendar-wrapper">
-      <div className="calendar-title">GitHub Contributions</div>
+      {showTitle && <div className="calendar-title">GitHub Contributions</div>}
       <div className="calendar-grid-container" ref={scrollContainerRef}>
         <GitHubCalendar
           username="DhirajB05"

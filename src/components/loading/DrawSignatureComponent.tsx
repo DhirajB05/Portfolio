@@ -141,7 +141,7 @@ export const DrawSignatureComponent: React.FC<DrawSignatureComponentProps> = ({
           borderRadius: 32,
         }}
       >
-        <div ref={ref} className="i flex shrink-0 p-1">
+        <div ref={ref} className="flex shrink-0 p-1">
           <AnimatePresence mode="popLayout" initial={false}>
             {step === 'idle' && (
               <motion.button

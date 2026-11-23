@@ -6,12 +6,22 @@
   position: relative;
 }
 
+/* Match the shared devfolio heading used by Github Activity / Projects:
+   Instrument Serif, italic, semibold, white — never Figtree. */
 .section-title-text {
-  font-family: var(--font-ui);
-  font-size: 1.1rem;
+  font-family: 'Instrument Serif', ui-serif, Georgia, Cambria, serif;
+  font-size: 1.875rem;
+  font-style: italic;
   font-weight: 600;
+  line-height: 1.2;
   color: var(--text-primary);
   letter-spacing: -0.01em;
+}
+
+@media (min-width: 40rem) {
+  .section-title-text {
+    font-size: 2.25rem;
+  }
 }
 
 .section-title-line {
