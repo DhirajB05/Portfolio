@@ -2,6 +2,8 @@ import { ReactNode } from 'react';
 import { FaGithub, FaLinkedin, FaEnvelope, FaFileAlt } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 
+import { getAssetUrl } from './images';
+
 export interface SocialLink {
   name: string;
   url: string;
@@ -30,7 +32,7 @@ export const socialLinks: SocialLink[] = [
   },
   {
     name: 'Resume',
-    url: '/resume',
+    url: getAssetUrl('/resume/resume.pdf'),
     icon: <FaFileAlt />,
     color: '#f59e0b',
   },

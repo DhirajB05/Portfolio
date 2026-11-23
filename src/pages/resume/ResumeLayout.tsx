@@ -14,7 +14,7 @@ export const ResumeLayout: React.FC = () => {
           <SectionTitle>Resume — Dhiraj Bhavikatti</SectionTitle>
           <a
             href={RESUME_URL}
-            download="Dhiraj_Bhavikatti_Resume.pdf"
+            download="Dhiraj_Bhavikatti.pdf"
             className="composite-btn"
             style={{
               display: 'inline-flex',

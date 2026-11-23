@@ -8,9 +8,8 @@ export const userImages = {
   profile: {
     avatar: getAssetUrl('/images/profile/pfp-latest.jpg'),
     qrCode: getAssetUrl('/images/profile/qr-code.png'),
-    // The reference hero swaps to a second avatar on click. Use the existing
-    // QR code asset instead of copying Mohan's unrelated image.
-    secondaryAvatar: getAssetUrl('/images/profile/qr-code.png'),
+    // The hero swaps to this card on avatar click.
+    secondaryAvatar: getAssetUrl('/images/profile/backside.png'),
     // Reference hero uses a looping video; adapt with one of this portfolio's
     // own wide project images so the banner keeps the same 16/10 rhythm.
     // Animated hero banner. The source GIF carries a Netscape loop count of 0,

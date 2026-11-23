@@ -54,40 +54,44 @@ export const HeroInfo = () => {
 
       {/* Roles line: "I'm a" + pill + "&" + rotating */}
       <Reveal delay={0.4}>
-        <p className="my-2 text-center text-sm leading-relaxed text-neutral-500 md:text-left md:text-xl">
-          Aspiring{' '}
-          <span
-            className="electric-role-card text-foreground relative mx-2"
-            style={{ fontSize: '0.95em', padding: '1.9px 5.7px' }}
-          >
-            <span className="corner-mark corner-tl" aria-hidden="true" />
-            <span className="corner-mark corner-tr" aria-hidden="true" />
-            <span className="corner-mark corner-bl" aria-hidden="true" />
-            <span className="corner-mark corner-br" aria-hidden="true" />
-            {fixedRole}
-          </span>
-          {' '}&amp;{' '}
-          <span className="text-foreground relative inline-grid max-w-full text-left align-bottom font-medium">
-            <span aria-hidden="true" className="invisible col-start-1 row-start-1 whitespace-nowrap">
-              {longestProfession}
+        <p className="my-2 flex flex-col items-center gap-1 text-center text-sm leading-relaxed text-neutral-500 md:flex-row md:flex-wrap md:items-baseline md:justify-start md:gap-2 md:text-left md:text-xl">
+          <span className="whitespace-nowrap">
+            Aspiring{' '}
+            <span
+              className="electric-role-card text-foreground relative"
+              style={{ fontSize: '0.95em', padding: '1.9px 5.7px' }}
+            >
+              <span className="corner-mark corner-tl" aria-hidden="true" />
+              <span className="corner-mark corner-tr" aria-hidden="true" />
+              <span className="corner-mark corner-bl" aria-hidden="true" />
+              <span className="corner-mark corner-br" aria-hidden="true" />
+              {fixedRole}
             </span>
-            {professions.map((profession, i) => (
-              <motion.span
-                key={profession}
-                initial={false}
-                animate={{
-                  opacity: index === i ? 1 : 0,
-                  filter: index === i ? 'blur(0px)' : 'blur(4px)',
-                  y: index === i ? 0 : 5,
-                }}
-                transition={{ duration: 0.3 }}
-                className={`col-start-1 row-start-1 whitespace-nowrap ${
-                  index === i ? 'relative' : 'pointer-events-none absolute'
-                }`}
-              >
-                {profession}
-              </motion.span>
-            ))}
+          </span>
+          <span className="whitespace-nowrap">
+            &amp;{' '}
+            <span className="text-foreground relative inline-grid max-w-full text-left align-bottom font-medium">
+              <span aria-hidden="true" className="invisible col-start-1 row-start-1 whitespace-nowrap">
+                {longestProfession}
+              </span>
+              {professions.map((profession, i) => (
+                <motion.span
+                  key={profession}
+                  initial={false}
+                  animate={{
+                    opacity: index === i ? 1 : 0,
+                    filter: index === i ? 'blur(0px)' : 'blur(4px)',
+                    y: index === i ? 0 : 5,
+                  }}
+                  transition={{ duration: 0.3 }}
+                  className={`col-start-1 row-start-1 whitespace-nowrap ${
+                    index === i ? 'relative' : 'pointer-events-none absolute'
+                  }`}
+                >
+                  {profession}
+                </motion.span>
+              ))}
+            </span>
           </span>
         </p>
       </Reveal>
@@ -104,7 +108,7 @@ export const HeroInfo = () => {
         <div className="my-3 flex w-fit items-center justify-center gap-2 md:justify-start">
           {socialLinks.map((item) => {
             const Icon = item.icon;
-            const isInternal = item.value.startsWith('/');
+            const isInternal = item.value.startsWith('/') && !item.value.endsWith('.pdf');
 
             return (
               <Tooltip key={item.id} text={item.name}>

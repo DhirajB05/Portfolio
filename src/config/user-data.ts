@@ -35,7 +35,7 @@ export const user = {
     { id: 1, name: "GitHub", url: "https://github.com/DhirajB05", color: "#ffffff" },
     { id: 2, name: "LinkedIn", url: "https://linkedin.com/in/dhiraj-bhavikatti-237b96359", color: "#0a66c2" },
     { id: 3, name: "X", url: "https://x.com/DhirajB05", color: "#1da1f2" },
-    { id: 4, name: "Resume", url: "/resume", color: "#f59e0b" },
+    { id: 4, name: "Resume", url: getAssetUrl("/resume/resume.pdf"), color: "#f59e0b" },
     { id: 5, name: "Mail", url: "mailto:dhirajbhavikatti05@gmail.com", color: "#ef4444" },
   ],
 
@@ -265,7 +265,7 @@ export const user = {
   navItems: [
     { name: "Home", href: "/" },
     { name: "Projects", href: "/projects" },
-    { name: "Resume", href: "/resume" },
+    { name: "Resume", href: getAssetUrl("/resume/resume.pdf") },
     { name: "Contact", href: "/contact" },
   ],
 

@@ -137,19 +137,6 @@ export const HeroAvatar = () => {
             </Reveal>
           </button>
         </div>
-
-        {/* Status badge under the avatar — keeps the reference's hero rhythm. */}
-        <Reveal delay={0.3}>
-          <div className="mx-auto mt-6 w-fit">
-            <div className="relative flex items-center gap-2 rounded-full bg-neutral-100 px-3 py-1 ring ring-neutral-400 dark:bg-neutral-900 dark:ring-neutral-700">
-              <span className="relative inline-flex">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75" />
-                <span className="relative inline-flex size-2 rounded-full bg-emerald-500" />
-              </span>
-              <p className="text-sm font-semibold">Open to work</p>
-            </div>
-          </div>
-        </Reveal>
       </div>
 
       {/* Tablet and desktop: avatar positioning remains fixed */}

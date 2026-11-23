@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaGithub, FaEnvelope, FaFileAlt } from 'react-icons/fa';
 import { useViewport, scaleForMobile, mobileRem, mobilePx } from '@/hooks/useViewport';
 import { useInteractionMode } from '@/hooks/useViewport';
+import { getAssetUrl } from '@/data/images';
 import './Navbar.css';
 
 export const Navbar: React.FC = () => {
@@ -88,8 +89,10 @@ export const Navbar: React.FC = () => {
             <span className="btn-label">GitHub</span>
           </a>
 
-          <Link
-            to="/resume"
+          <a
+            href={getAssetUrl('/resume/resume.pdf')}
+            target="_blank"
+            rel="noopener noreferrer"
             className="navbar-action-btn"
             aria-label="Resume"
             onTouchStart={handleActionTouchStart}
@@ -114,7 +117,7 @@ export const Navbar: React.FC = () => {
           >
             <FaFileAlt className="btn-icon" style={{ fontSize: isMobile ? '1.15rem' : '0.85rem' }} />
             <span className="btn-label">Resume</span>
-          </Link>
+          </a>
 
           <a
             href="mailto:dhirajbhavikatti05@gmail.com"
