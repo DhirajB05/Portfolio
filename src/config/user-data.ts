@@ -58,22 +58,6 @@ export const user = {
       logo: userImages.logos.gdg,
     },
     {
-      id: 1,
-      company: "GDG Atria AI Hackathon",
-      post: "Hackathon Participant & Builder",
-      duration: "Apr 2026",
-      place: "Bengaluru, India",
-      description:
-        "Prototyped an AI security middleware during a 24-hour hackathon at Atria Institute of Technology, Bengaluru.",
-      points: [
-        "Implemented a 2-stage prompt injection detection pipeline using DeBERTa-v3 and the Claude API.",
-        "Built a dashboard to visualize incoming prompts, risk scores, and attack vectors in real time.",
-      ],
-      technologies: ["Python", "FastAPI", "React", "DeBERTa-v3", "Claude API", "Supabase"],
-      status: "past",
-      logo: userImages.logos.gdg,
-    },
-    {
       id: 2,
       company: "SOSC — Sahyadri Open Source Community",
       post: "Active Open Source Member",
@@ -98,6 +82,22 @@ export const user = {
       technologies: ["Web Development", "Innovation"],
       status: "present",
       logo: userImages.logos.isdc,
+    },
+    {
+      id: 1,
+      company: "GDG Atria AI Hackathon",
+      post: "Hackathon Participant & Builder",
+      duration: "Apr 2026",
+      place: "Bengaluru, India",
+      description:
+        "Prototyped an AI security middleware during a 24-hour hackathon at Atria Institute of Technology, Bengaluru.",
+      points: [
+        "Implemented a 2-stage prompt injection detection pipeline using DeBERTa-v3 and the Claude API.",
+        "Built a dashboard to visualize incoming prompts, risk scores, and attack vectors in real time.",
+      ],
+      technologies: ["Python", "FastAPI", "React", "DeBERTa-v3", "Claude API", "Supabase"],
+      status: "past",
+      logo: userImages.logos.gdg,
     },
     {
       id: 4,

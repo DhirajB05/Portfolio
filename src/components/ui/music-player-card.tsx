@@ -46,7 +46,7 @@ const Card = () => {
   return (
     <div
       ref={containerRef}
-      className="absolute right-0 bottom-[52px] z-30 flex md:-bottom-[74px]"
+      className="absolute right-0 bottom-6 z-30 flex md:-bottom-[74px]"
     >
       <Tooltip text={open ? 'Close player' : 'Open player'} position="top">
         <button

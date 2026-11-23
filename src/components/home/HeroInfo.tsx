@@ -105,7 +105,7 @@ export const HeroInfo = () => {
 
       {/* Social links */}
       <Reveal delay={0.5}>
-        <div className="my-3 flex w-fit items-center justify-center gap-2 md:justify-start">
+        <div className="mx-auto my-3 flex w-fit items-center justify-center gap-2 md:mx-0 md:justify-start">
           {socialLinks.map((item) => {
             const Icon = item.icon;
             const isInternal = item.value.startsWith('/') && !item.value.endsWith('.pdf');
